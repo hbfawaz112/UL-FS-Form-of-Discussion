@@ -12,7 +12,7 @@ Styled using Bootstrap 4 framework
    
   
  ### answers on a specific questions 
-   [alt text](https://github.com/hbfawaz112/UL-FS-Form-of-Discussion/blob/main/screenshots/answers.png.png?raw=true)
+   [alt text](https://github.com/hbfawaz112/UL-FS-Form-of-Discussion/blob/main/screenshots/answers.png?raw=true)
     
    # And More !!! 
    ### See the screenshots folder for more informations 
