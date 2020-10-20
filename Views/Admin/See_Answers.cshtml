@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Asp.net_Project.Models.Answer>
+
+@{
+    ViewBag.Title = "See_Answers";
+}
+<br />
+<br />
+<div class="jumbotron">
+
+    <h2 align="center">Other Answers : </h2>
+    <hr />
+
+
+
+    @{
+        if (Model.ToList().Count == 0)
+        {
+            <br />
+            <br /> <br />
+            <br />
+            <br />
+            <br />
+            <h1 align="center" style="color:red "> No Answers Yet On This Questioin..  </h1>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+        }
+    }
+
+
+
+
+
+
+    @{
+        int count = 1;
+    }
+
+    @foreach (var item in Model)
+    {
+
+        <b>Answer @count : </b>
+        <br />
+        @Html.DisplayFor(modelItem => item.answer)
+        <br />
+        <div style="margin-left:800px">
+            <b> Date : </b> @Html.DisplayFor(modelItem => item.datatime_answering)
+            <br>
+
+
+
+            <b> Answer By: </b> @Html.DisplayFor(modelItem => item.answerd_by_name)
+        </div>
+
+        @Html.ActionLink("Remove(Delete This Answer)", "Delete_Answer", "Admin", new { id = item.id }, new { @class = "btn btn-danger" })
+        <hr />
+        count++;
+    }
+</div>

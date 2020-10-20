@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Asp.net_Project.Models.User>
+
+@{
+    ViewBag.Title = "List_Of_All_User";
+}
+<br />
+<br />
+<h2>List Of All Users</h2>
+<h5>From A~Z</h5>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                <b>Full Name :</b>
+            </th>
+
+            <th>
+                Class Or Promotion :
+            </th>
+            <th>&nbsp;&nbsp;&nbsp;Options :</th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fname)
+                @Html.DisplayFor(modelItem => item.lname)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.classe)
+            </td>
+            <td>
+                @Html.ActionLink("View Profile", "SeeProfile", "User", new { id = item.id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Remove(Delete User)", "Delete", "Admin", new { id = item.id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Asp.net_Project.Models.User>
+
+@{
+    ViewBag.Title = "List_Of_User";
+}
+<br />
+<br />
+<h2 align="center">List Of User Registred Here !! </h2>
+<hr />
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-inline ">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <br />
+        <div class="form-group">
+
+            <div style="margin-left:360px">
+
+                <input class="form-control" style="width:900px" type="text" placeholder="Search for person... " />
+                &nbsp;&nbsp;&nbsp;
+                <input type="submit" value=" &nbsp;&nbsp;&nbsp;Search &nbsp;&nbsp;&nbsp;" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+<br />
+<h5>From A~Z </h5>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th> <b>Name : </b> </th>
+            <th> Class  Or Promotion :</th>
+            <th>Options : </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fname) @Html.DisplayFor(modelItem => item.lname)
+
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.classe)
+            </td>
+            <td>
+                @Html.ActionLink("Ask Him A Question", "Ask_Him_Question", "Question", new { id = item.id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("See His Profile", "SeeProfile", "User", new { id = item.id }, new { @class = "btn btn-success" })
+
+            </td>
+        </tr>
+    }
+
+</table>

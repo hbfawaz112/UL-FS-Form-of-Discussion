@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Asp.net_Project.Models.Question>
+
+@{
+    ViewBag.Title = "list_of_my_question";
+}
+<br />
+<br />
+<h2>List Of My Question</h2>
+@{
+    <h4>
+        Total Question :
+        @Model.ToList().Count.ToString()
+        Questions
+
+    </h4>
+}
+<table class="table ">
+    <thead class="thead-dark">
+        <tr>
+
+            <th>
+                Question Title
+            </th>
+            <th>
+                Question Details
+            </th>
+
+            <th>
+                Categorie
+            </th>
+            <th>
+                Class Destination Or Promotion
+            </th>
+
+            <th>
+                DataTime
+            </th>
+
+            <th>
+                Option
+            </th>
+
+
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.queston_title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.question_detail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.categorie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.classedestination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.asking_date)
+            </td>
+            <td>
+
+                @Html.ActionLink("See Answers ", "See_Other_Answers", "Answer", new { id = item.id }, new { @class = "btn btn-primary" })
+                <br /><br />
+                @Html.ActionLink("Reply to your question ", "answer_question", "Answer", new { id = item.id }, new { @class = "btn btn-success" })
+
+            </td>
+        </tr>
+    }
+
+</table>

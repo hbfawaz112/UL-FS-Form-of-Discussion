@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body style="padding-top:unset; padding-bottom:unset">
+
+    <nav class="navbar navbar-expand-sm bg-dark fixed-top navbar-dark">
+        <!--Logo-->
+        <a class="navbar-brand" href="#">
+            <img src="~/Content/logo.jpg" width="63" height="63" class="d-inline-block align-top" alt=" ">
+        </a>
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">UL-FS Forum Of Discussion</a>
+
+
+        @{
+            if (@Session["loggedin_admin"].ToString().Equals("1"))
+            {
+                <h4 class="text-white">Admin Page &nbsp;&nbsp;&nbsp;&nbsp;</h4>
+                <!-- Links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <!--<a class="nav-link" href="#">Home</a>-->
+            @Html.ActionLink("Home", "Index", "Admin", new { area = "" }, new { @class = "nav-link" })
+        </li>
+
+        <li class="nav-item">
+            <!--<a class="nav-link" href="#">Home</a>-->
+            @Html.ActionLink("List Of All User", "List_Of_All_User", "Admin", new { area = "" }, new { @class = "nav-link" })
+        </li>
+
+        <li class="nav-item">
+            <!--<a class="nav-link" href="#">Home</a>-->
+            @Html.ActionLink("List Of Questions", "List_Public_All_Quesion", "Admin", new { area = "" }, new { @class = "nav-link" })
+        </li>
+
+        <li class="nav-item">
+            <!--<a class="nav-link" href="#">Home</a>-->
+            @Html.ActionLink("Add A User", "Add_User", "Admin", new { area = "" }, new { @class = "nav-link" })
+        </li>
+
+        <li class="nav-item">
+            <!--<a class="nav-link" href="#">Home</a>-->
+            @Html.ActionLink("Add A New Admin", "Add_Admin", "Admin", new { area = "" }, new { @class = "nav-link" })
+        </li>
+
+        <li class="nav-item">
+            <!--<a class="nav-link" href="#">Home</a>-->
+            @Html.ActionLink("Statistics", "stat", "Admin", new { area = "" }, new { @class = "nav-link" })
+        </li>
+
+        <li class="nav-item">
+            <!--<a class="nav-link" href="#">Home</a>-->
+            @Html.ActionLink("Logout", "Admin_Logout", "Admin", new { area = "" }, new { @class = "nav-link" })
+        </li>
+
+    </ul>
+            }
+
+            else
+            {
+
+
+
+                    <!-- Links -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <!--<a class="nav-link" href="#">Home</a>-->
+                            @Html.ActionLink("Home", "Index", "Question", new { area = "" }, new { @class = "nav-link" })
+                        </li>
+                        <!-- Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Qestion Categorie
+                            </a>
+                            <div class="dropdown-menu">
+                                <!--<a class="dropdown-item" href="#"> Academic Qestions</a>-->
+                                @Html.ActionLink("Academic Questions", "Academic_Question", "Question", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Management Questions", "Management_Question", "Question", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Miscellaneous Questions", "Miscellaneous_Question", "Question", new { area = "" }, new { @class = "dropdown-item" })
+
+                                <!--
+                            <a class="dropdown-item" href="#">Management Questions</a>
+                            <a class="dropdown-item" href="#">Miscellaneous Qustions</a>
+                            -->
+
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <!--<a class="nav-link" href="#">Ask Question</a>-->
+                            @Html.ActionLink("Ask Question", "Ask_Question", "Question", new { area = "" }, new { @class = "nav-link" })
+
+                        </li>s
+
+                        <li class="nav-item">
+                            <!--<a class="nav-link" href="#">Direct Question Within My Promotion</a>-->
+                            @Html.ActionLink("Direct Question Within My Promotion", "Direct_Question_Within_My_Promotion", "Question", new { area = "" }, new { @class = "nav-link" })
+
+                        </li>
+
+                        <li class="nav-item">
+                            <!--<a class="nav-link" href="#">Direct Question Within My Promotion</a>-->
+                            @Html.ActionLink("List Of User", "List_Of_User", "User", new { area = "" }, new { @class = "nav-link" })
+
+                        </li>
+
+
+
+
+                        <!-- Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                User
+                            </a>
+                            <div class="dropdown-menu">
+
+                                @{
+                                    if (@Session["loggedin"].ToString().Equals("0"))
+                                    {
+
+                                        @Html.ActionLink("Login", "Login", "User", new { area = "" }, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("Sign Up", "SignUp", "User", new { area = "" }, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("Login as admin", "Admin_LogIn", "Admin", new { area = "" }, new { @class = "dropdown-item" })
+
+
+                                    }
+                                    else
+                                    {
+                                        <div class="dropdown-item">
+                                            @Session["userfname"].ToString()
+                                            @Session["userlname"].ToString()
+                                        </div>
+
+                                        @Html.ActionLink("Direct Question For Me", "Direst_Question_For_Me", "Question", new { area = "" }, new { @class = "dropdown-item" })
+
+                                        @Html.ActionLink("List of my questions", "list_of_my_question", "Question", new { area = "" }, new { @class = "dropdown-item" })
+
+                                        @Html.ActionLink("Update Profile", "UpdateProfile", "User", new { area = "" }, new { @class = "dropdown-item" })
+
+                                        @Html.ActionLink("logout", "Logout", "User", new { area = "" }, new { @class = "dropdown-item" })
+
+                                    }
+
+                                }
+
+                                <!--
+                            <a class="dropdown-item" href="#"> Login</a>
+                            <a class="dropdown-item" href="#">Sign Up</a>
+                            <a class="dropdown-item" href="#">Update Profile</a
+                                -->
+                            </div>
+                        </li>
+
+
+
+                    </ul>
+                                        }
+                                    }
+            </nav>
+
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer class="footer">
+            <div class="container">
+                <p class="pull-left">
+                    <b>@DateTime.Now.ToString() - </b>
+                    <b>&copy;Copyright 2020 | Lebanese University - Faculty of Science. </b>
+                    <!--<b style="margin-left: 250px">By : Hussein B. Fawaz</b>-->
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Asp.net_Project.Models.User>
+
+@{
+    ViewBag.Title = "showusers";
+}
+<br />
+<br />
+<h2>showusers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.college)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.major)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.language)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.classe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bio)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.college)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.major)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.language)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.classe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bio)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Asp.net_Project.Models.Question>
+
+@{
+    ViewBag.Title = "List_Miscellaneous_Question";
+}
+<br />
+<br />
+<h2 align="center">List Of All <b><u><b>Miscellaneous Public Quesions </b></u></b>Asking By Users</h2>
+<hr />
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                <b>ID Of User Who Asking </b>
+            </th>
+            <th>
+                Name Of User Who Asking
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.queston_title)
+            </th>
+
+
+            <th> Options</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.asked_by_who_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.asked_by_who_name)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.queston_title)
+            </td>
+
+
+            <td>
+                @Html.ActionLink("View Details", "Details_Question", "Admin", new { id = item.id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("See Answers ", "See_Answers", "Admin", new { id = item.id }, new { @class = "btn btn-success" })
+
+                @Html.ActionLink("Delete Question", "Delete_Question", "Admin", new { id = item.id }, new { @class = "btn btn-danger" })
+
+            </td>
+        </tr>
+    }
+
+</table>

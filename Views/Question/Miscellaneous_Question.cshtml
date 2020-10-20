@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Asp.net_Project.Models.Question>
+
+@{
+    ViewBag.Title = "Miscellaneaous_Question";
+}
+<br />
+<br />
+<h2> Public Miscellaneaous Questions</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-inline ">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <br />
+        <div class="form-group">
+
+            <div style="margin-left:360px">
+
+                <input class="form-control" style="width:900px" type="text" placeholder="Search ... " />
+                &nbsp;&nbsp;&nbsp;
+                <input type="submit" value=" &nbsp;&nbsp;&nbsp;Search &nbsp;&nbsp;&nbsp;" class="btn btn-outline-primary" />
+            </div>
+        </div>
+    </div>
+}
+<hr />
+@{
+    <h4>
+        Total Question :
+        @Model.ToList().Count.ToString()
+        Questions
+
+    </h4>
+}
+<div class="jumbotron">
+    @{
+        if (Model.ToList().Count == 0)
+        {
+            <br />
+            <br />
+            <h1 align="center" style="color:dodgerblue "> No Public Questions Yet  (Miscellaneaous Questions </h1>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        }
+    }
+
+
+    @foreach (var item in Model)
+    {
+
+
+        <div class="card" style="width:1000px">
+
+            <div class="card-body">
+
+                <h4 class="card-title">
+                    @Html.DisplayFor(modelItem => item.queston_title)
+
+                </h4>
+
+
+                <p class="card-text">
+
+                    @Html.DisplayFor(modelItem => item.question_detail)
+
+                </p>
+
+
+                &nbsp;  &nbsp;  &nbsp;  &nbsp;  <br>
+
+
+                <b> Asked By : </b>@Html.DisplayFor(modelItem => item.asked_by_who_name) &nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>Date : </b> @Html.DisplayFor(modelItem => item.asking_date)
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>Question Categorie : </b> @Html.DisplayFor(modelItem => item.categorie)
+                <br /><br />
+                <div class="form-inline">
+                    @Html.ActionLink("Answer This Question", "answer_question", "Answer", new
+                   { id = item.id }, new { @class = "btn btn-primary" })
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    @Html.ActionLink("See Other Answers", "See_Other_Answers", "Answer", new
+{ id = item.id }, new { @class = "btn btn-danger" })
+
+                    @Html.ActionLink("See His Profile", "SeeProfile", "User", new
+                    { id = item.asked_by_who_id }, new { @class = "btn btn-success", @style = "margin-left:350px" })
+
+                </div>
+            </div>
+        </div>
+
+        <hr />
+
+
+    }
+</div>

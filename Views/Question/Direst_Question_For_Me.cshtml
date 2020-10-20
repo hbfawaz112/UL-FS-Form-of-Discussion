@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Asp.net_Project.Models.Question>
+
+@{
+    ViewBag.Title = "Direst Question For Me";
+}
+<br />
+<br />
+<h2>Direst Question For Me</h2>
+@{
+    <h4>
+        Total Question :
+        @Model.ToList().Count.ToString()
+        Questions
+
+    </h4>
+}
+<div class="jumbotron">
+    @{
+        if (Model.ToList().Count == 0)
+        {
+            <br />
+            <br />
+            <h1 align="center" style="color:dodgerblue ">There are no question for you yet!!  </h1>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        }
+    }
+
+
+    @foreach (var item in Model)
+    {
+
+
+        <div class="card" style="width:1000px">
+
+            <div class="card-body">
+
+                <h4 class="card-title">
+                    @Html.DisplayFor(modelItem => item.queston_title)
+
+                </h4>
+
+
+                <p class="card-text">
+
+                    @Html.DisplayFor(modelItem => item.question_detail)
+
+                </p>
+
+
+                &nbsp;  &nbsp;  &nbsp;  &nbsp;  <br>
+
+
+                <b> Asked By : </b>@Html.DisplayFor(modelItem => item.asked_by_who_name) &nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>Date : </b> @Html.DisplayFor(modelItem => item.asking_date)
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>Question Categorie : </b> @Html.DisplayFor(modelItem => item.categorie)
+                <br /><br />
+                <div class="form-inline">
+                    @Html.ActionLink("Answer This Question", "answer_question", "Answer", new
+                   { id = item.id }, new { @class = "btn btn-primary" })
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                    @Html.ActionLink("See Other Answers", "See_Other_Answers", "Answer", new
+{ id = item.id }, new { @class = "btn btn-danger" })
+
+                    @Html.ActionLink("See His Profile", "SeeProfile", "User", new
+                    { id = item.asked_by_who_id }, new { @class = "btn btn-success", @style = "margin-left:350px" })
+
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+</div>

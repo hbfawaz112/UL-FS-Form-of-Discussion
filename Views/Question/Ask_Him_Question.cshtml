@@ -1,0 +1,70 @@
+﻿@model Asp.net_Project.Models.Question
+
+@{
+    ViewBag.Title = "Ask Him Question";
+}
+
+<br />
+<br />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="jumbotron">
+        <h2 align="center">Ask him  a question </h2>
+        <hr />
+        <div class="form-horizontal" align="center">
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <b>Question Categorie :</b>
+                <div class="col-md-10">
+                    @Html.DropDownList("categorie", new List<SelectListItem>()
+                            {
+                                new SelectListItem{Text="Acedemic Question" , Value = "Academic Question"},
+                                new SelectListItem{Text="Management Question" , Value = "Management Question"},
+                                 new SelectListItem{Text="Miscellaneous Question" , Value = "Miscellaneous Question"},
+
+
+                            }, "Question Categorie", new { @class = "form-control col-md-8" }
+                               )
+                    @Html.ValidationMessageFor(model => model.categorie, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <b>Question Title :</b>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.queston_title, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                    @Html.ValidationMessageFor(model => model.queston_title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2"><b>Question Detail :</b></label>
+
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.question_detail, new { @class = "form-control col-md-8", @placeholder = "Question Detail..." })
+
+                    @Html.ValidationMessageFor(model => model.question_detail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Ask the question" class="btn btn-success" />
+                </div>
+            </div>
+            <hr />
+        </div>
+    </div>
+}
+
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

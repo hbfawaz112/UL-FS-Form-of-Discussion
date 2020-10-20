@@ -1,0 +1,160 @@
+﻿@model Asp.net_Project.Models.Question
+
+@{
+    ViewBag.Title = "Ask_Question";
+}
+
+
+
+@*
+
+    @{
+        if (@Session["userid"].ToString().Equals("0"))
+        {
+
+        }
+        else
+        {
+            <h6>@Session["userid"].ToString()</h6>
+        }
+    }
+
+    @{
+        if (@Session["userfname"] != null)
+        {
+            <h6>@Session["userfname"].ToString()</h6>
+
+        }
+        else
+        {
+
+        }
+
+        if (@Session["userlname"] != null)
+        {
+            <h6>@Session["userlname"].ToString()</h6>
+
+        }
+        else
+        {
+
+        }
+
+
+    }
+
+
+*@
+
+
+
+<br />
+<br />
+
+
+<div class="container-fluid body-content">
+
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="jumbotron">
+            <h2 align="center">Ask a question </h2>
+            <hr />
+            <div class="form-horizontal" align="center">
+
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-3"><b>Question Categorie : </b></label>
+
+                    <div class="col-md-10">
+                        @Html.DropDownList("categorie", new List<SelectListItem>()
+                       {
+                           new SelectListItem{Text="Acedemic Question" , Value = "Academic Question"},
+                           new SelectListItem{Text="Management Question" , Value = "Management Question"},
+                            new SelectListItem{Text="Miscellaneous Question" , Value = "Miscellaneous Question"},
+
+
+                       }, "Question Categorie", new { @class = "form-control col-md-8" }
+                          )
+                        @Html.ValidationMessageFor(model => model.categorie, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-5"><b>For who you want to ask this question :</b></label>
+
+                    <div class="col-md-10">
+                        @Html.DropDownList("classedestination", new List<SelectListItem>()
+                   {
+                        new SelectListItem{Text="Public Question" , Value = "Public Question"},
+                       new SelectListItem{Text="Bachelor Theird Year (This Year)" , Value = "Bachelor_Theird_Year_This Year"},
+                       new SelectListItem{Text="Bachelor Second Year (This Year)" , Value = "Bachelor_Second_Year_This Year"},
+                       new SelectListItem{Text="Bachelor First Year (This Year)" , Value = "Bachelor_First_Year_This Year"},
+                         new SelectListItem{Text= " Master1 (This Year)" , Value = "Master1_This Year"},
+                         new SelectListItem{Text= " Master2 (This Year)" , Value = "Master2_This Year"},
+                         new SelectListItem{Text= " Class Of 2018-2019 Bachelor" , Value = "Class_Of_2018_2019_Bachelor"},
+                         new SelectListItem{Text= " Class Of 2018-2019 Master1" , Value = "Class_Of_2018_2019_Master1"},
+                         new SelectListItem{Text= " Class Of 2018-2019 Master2" , Value = "Class_Of_2018_2019_Master2"},
+                         new SelectListItem{Text= " Class Of 2017-2018 Bachelor" , Value = "Class_Of_2017_2018_Bachelor"},
+                         new SelectListItem{Text= " Class Of 2017-2018 Master1" , Value = "Class_Of_2017_2018_Master1"},
+                         new SelectListItem{Text= " Class Of 2017-2018 Master2" , Value = "Class_Of_2017_2018_Master2"},
+                         new SelectListItem{Text= " Class Of 2016-2017 Bachelor" , Value = "Class_Of_2016_2017_Bachelor"},
+                         new SelectListItem{Text= " Class Of 2016-2017 Master1" , Value = "Class_Of_2016_2017_Master1"},
+                         new SelectListItem{Text= " Class Of 2016-2017 Master2" , Value = "Class_Of_2016_2017_Master2"},
+                         new SelectListItem{Text= " Class Of 2015-2016 Bachelor" , Value = "Class_Of_2015_2016_Bachelor"},
+                         new SelectListItem{Text= " Class Of 2015-2016 Master1" , Value = "Class_Of_2015_2016_Master1"},
+                         new SelectListItem{Text= " Class Of 2015-2016 Master2" , Value = "Class_Of_2015_2016_Master2"},
+                         new SelectListItem{Text= " Before 2014-2015" , Value = "Before_2014_2015"},
+
+
+                   }, "select Classe ", new { @class = "form-control col-md-8" }
+                      )
+
+                        @Html.ValidationMessageFor(model => model.classedestination, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2"><b>Question Title :</b></label>
+
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.queston_title, new { htmlAttributes = new { @class = "form-control col-md-8", @placeholder = "Question Title..." } })
+                        @Html.ValidationMessageFor(model => model.queston_title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2"><b>Question Detail :</b></label>
+
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.question_detail, new { @class = "form-control col-md-8", @placeholder = "Question Detail..." })
+
+                        @Html.ValidationMessageFor(model => model.question_detail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Ask Question " class="btn btn-primary" />
+                    </div>
+                </div>
+                <hr />
+            </div>
+        </div>
+
+    }
+
+
+</div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

@@ -1,0 +1,72 @@
+﻿@model Asp.net_Project.Models.Question
+
+@{
+    ViewBag.Title = "Details_Question";
+}
+<br />
+<br />
+<h2>Detail Of Question</h2>
+
+<div class="jumbotron">
+    <div align="center">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                <b>Id Of User Who Asking </b>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.asked_by_who_id)
+            </dd>
+
+            <dt>
+                <b> Name Of User Who Asking </b>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.asked_by_who_name)
+            </dd>
+
+            <dt>
+                <b>Question Categorie</b>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.categorie)
+            </dd>
+
+            <dt>
+                <b>Class , promotion , ID Of User Destination Destination</b>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.classedestination)
+            </dd>
+
+            <dt>
+                <b>Question Title</b>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.queston_title)
+            </dd>
+
+            <dt>
+                <b>Question Detail</b>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.question_detail)
+            </dd>
+
+            <dt>
+                <b>Asking DateTime </b>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.asking_date)
+            </dd>
+
+        </dl>
+    </div>
+</div>

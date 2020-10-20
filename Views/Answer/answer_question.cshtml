@@ -1,0 +1,47 @@
+﻿@model Asp.net_Project.Models.Answer
+
+@{
+    ViewBag.Title = "answer_question";
+}
+
+<br />
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="jumbotron">
+        <h2 align="center">Submit your answer </h2>
+        <hr />
+        <div class="form-horizontal" align="center">
+
+
+
+            <div class="form-group">
+                <label class="control-label col-md-3"><b>Your Answer: </b></label>
+
+                <div class="col-md-10">
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.answer, new { @class = "form-control col-md-8", @placeholder = "Your answer..." })
+
+                        @Html.ValidationMessageFor(model => model.answer, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Submit your answer " class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

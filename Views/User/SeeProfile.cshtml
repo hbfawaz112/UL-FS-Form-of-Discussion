@@ -1,0 +1,44 @@
+﻿@model Asp.net_Project.Models.User
+
+@{
+    ViewBag.Title = "SeeProfile";
+}
+
+
+
+<br />
+<br />
+<div class="container">
+
+    <div class="jumbotron">
+        <div class="card">
+
+            <h2 align="center">Profile </h2>
+            <hr>
+            <div class="form-group" align="center">
+                <b>Full Name : </b>  @Html.DisplayFor(model => model.fname)  @Html.DisplayFor(model => model.lname).
+                <br><br>
+                <b>Email: </b>  @Html.DisplayFor(model => model.email) .
+                <br><br>
+
+                <b>College : </b> @Html.DisplayFor(model => model.college)
+                <br><br> <b>Major : </b> @Html.DisplayFor(model => model.major) <br><br>
+                <b>Language : </b> @Html.DisplayFor(model => model.language) <br><br>
+                <b>Class (or promotion) : </b>  @Html.DisplayFor(model => model.classe) <br><br>
+                <b>Some of His Bio : </b> @Html.DisplayFor(model => model.bio)
+            </div>
+        </div>
+        <br />
+        @{
+            if (Session["loggedin_admin"].ToString().Equals("0"))
+
+            {@Html.ActionLink("Ask Him A Question", "Ask_Him_Question", "Question", new { id = Model.id }, new { @class = "btn btn-primary", @style = "margin-left:400px" })
+        }
+        else { }
+        }
+    </div>
+
+</div>
+
+
+

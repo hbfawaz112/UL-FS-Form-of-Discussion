@@ -1,0 +1,208 @@
+﻿@model Asp.net_Project.Models.User
+
+@using Asp.net_Project.Models
+
+@{
+    ViewBag.Title = "SignUp";
+}
+
+
+
+<br />
+<br />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+    <div class="jumbotron">
+        <div class="form-horizontal" align="center">
+
+            <h2 align="center">Create Account Page</h2>
+            <hr />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <br />
+            <div class="form-group">
+
+                <label class="control-label col-md-2"><b>First Name :</b></label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.fname, new { htmlAttributes = new { @class = "form-control col-md-10", @placeholder = "First Name" } })
+                    @Html.ValidationMessageFor(model => model.fname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2"><b>Last Name :</b></label>
+
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.lname, new { htmlAttributes = new { @class = "form-control col-md-10", @placeholder = "Last Name" } })
+                    @Html.ValidationMessageFor(model => model.lname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2"><b>Email :</b></label>
+
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control col-md-10", @placeholder = "Email" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2"><b>User Name :</b></label>
+
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control col-md-10", @placeholder = "User Name" } })
+                    @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2"><b>Password :</b></label>
+
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control col-md-10", @placeholder = "Password" } })
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2"><b>College (Section)</b></label>
+
+                <div class="col-md-10">
+
+                    @Html.DropDownList("college", new List<SelectListItem>()
+               {
+                   new SelectListItem{Text="FS-SECTION 1" , Value = "FS-SECTION-1"},
+                   new SelectListItem{Text="FS-SECTION 2" , Value = "FS-SECTION-2"},
+                    new SelectListItem{Text="FS-SECTION 3" , Value = "FS-SECTION-3"},
+                    new SelectListItem{Text="FS-SECTION 4" , Value = "FS-SECTION-4"},
+                    new SelectListItem{Text="FS-SECTION 5" , Value = "FS-SECTION-5"},
+
+               }, "select College(Section of FS)", new { @class = "form-control col-md-10" }
+                  )
+
+                    @Html.ValidationMessageFor(model => model.college, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2"><b>Major : </b></label>
+
+                <div class="col-md-10">
+
+                    @Html.DropDownList("major", new List<SelectListItem>()
+              {
+                  new SelectListItem{Text="Informatic" , Value = "Informatic"},
+                  new SelectListItem{Text="Math" , Value = "Math"},
+                   new SelectListItem{Text="Physics" , Value = "Physics"},
+                   new SelectListItem{Text="Biologie" , Value = "Biologie"},
+                   new SelectListItem{Text="chemistry" , Value = "chemistry"},
+                   new SelectListItem{Text="Biochemistry" , Value = "Biochemistry"},
+
+
+              }, "select Major", new { @class = "form-control col-md-10" }
+                 )
+
+                    @Html.ValidationMessageFor(model => model.major, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2"><b>Language : </b></label>
+
+                <div class="col-md-10">
+
+                    @Html.DropDownList("language", new List<SelectListItem>()
+                 {
+                     new SelectListItem{Text="Francais" , Value = "Francais"},
+                     new SelectListItem{Text="English" , Value = "English"},
+
+                 }, "select Language", new { @class = "form-control col-md-10" }
+                    )
+
+
+                    @Html.ValidationMessageFor(model => model.language, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2"><b>Class : </b></label>
+
+                <div class="col-md-10">
+
+                    @Html.DropDownList("classe", new List<SelectListItem>()
+           {
+                 new SelectListItem{Text="Bachelor Theird Year (This Year)" , Value = "Bachelor_Theird_Year_This Year"},
+                 new SelectListItem{Text="Bachelor Second Year (This Year)" , Value = "Bachelor_Second_Year_This Year"},
+                 new SelectListItem{Text="Bachelor First Year (This Year)" , Value = "Bachelor_First_Year_This Year"},
+                 new SelectListItem{Text= " Master1 (This Year)" , Value = "Master1_This Year"},
+                 new SelectListItem{Text= " Master2 (This Year)" , Value = "Master2_This Year"},
+                 new SelectListItem{Text= " Class Of 2018-2019 Bachelor" , Value = "Class_Of_2018_2019_Bachelor"},
+                 new SelectListItem{Text= " Class Of 2018-2019 Master1" , Value = "Class_Of_2018_2019_Master1"},
+                 new SelectListItem{Text= " Class Of 2018-2019 Master2" , Value = "Class_Of_2018_2019_Master2"},
+                 new SelectListItem{Text= " Class Of 2017-2018 Bachelor" , Value = "Class_Of_2017_2018_Bachelor"},
+                 new SelectListItem{Text= " Class Of 2017-2018 Master1" , Value = "Class_Of_2017_2018_Master1"},
+                 new SelectListItem{Text= " Class Of 2017-2018 Master2" , Value = "Class_Of_2017_2018_Master2"},
+                 new SelectListItem{Text= " Class Of 2016-2017 Bachelor" , Value = "Class_Of_2016_2017_Bachelor"},
+                 new SelectListItem{Text= " Class Of 2016-2017 Master1" , Value = "Class_Of_2016_2017_Master1"},
+                 new SelectListItem{Text= " Class Of 2016-2017 Master2" , Value = "Class_Of_2016_2017_Master2"},
+                 new SelectListItem{Text= " Class Of 2015-2016 Bachelor" , Value = "Class_Of_2015_2016_Bachelor"},
+                 new SelectListItem{Text= " Class Of 2015-2016 Master1" , Value = "Class_Of_2015_2016_Master1"},
+                 new SelectListItem{Text= " Class Of 2015-2016 Master2" , Value = "Class_Of_2015_2016_Master2"},
+                 new SelectListItem{Text= " Before 2014-2015" , Value = "Before_2014_2015"},
+
+
+           }, "select Classe ", new { @class = "form-control col-md-10" }
+              )
+
+                    @Html.ValidationMessageFor(model => model.classe, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2"><b>Bio :</b></label>
+
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.bio, new { @class = "form-control col-md-10", @placeholder = "Some Of Your Bio (Work experience , Master2-major , ect..)" })
+                    @Html.ValidationMessageFor(model => model.bio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+
+                    <input type="submit" value="Create Account" class="btn btn-primary" />
+
+                </div>
+                @Html.ActionLink("Already hava an account ? Login Here! ", "Login")
+
+            </div>
+            <hr />
+        </div>
+    </div>
+
+
+}

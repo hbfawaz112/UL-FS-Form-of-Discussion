@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Asp.net_Project.Models.Question>
+
+@{
+    ViewBag.Title = "show";
+}
+<br />
+<br />
+<h2>show</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.asked_by_who_id)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.asked_by_who_name)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.categorie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.classedestination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.queston_title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.question_detail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.asking_date)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.asked_by_who_id)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.asked_by_who_name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.categorie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.classedestination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.queston_title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.question_detail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.asking_date)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>

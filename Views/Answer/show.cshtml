@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Asp.net_Project.Models.Answer>
+
+@{
+    ViewBag.Title = "show";
+}
+
+<br />
+<br />
+<h2>show</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.question_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.answer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.answerd_by_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.answerd_by_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datatime_answering)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.question_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.answer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.answerd_by_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.answerd_by_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.datatime_answering)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>
