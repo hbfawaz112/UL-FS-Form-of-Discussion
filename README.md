@@ -11,7 +11,7 @@ Styled using Bootstrap 4 framework
    ![alt text](https://github.com/hbfawaz112/UL-FS-Form-of-Discussion/blob/main/screenshots/ask_question.png?raw=true)
    
   
- ### answers on a specific questions 
+ ### Answers on a specific questions 
    ![alt text](https://github.com/hbfawaz112/UL-FS-Form-of-Discussion/blob/main/screenshots/answers.png?raw=true)
     
    # And More !!! 
